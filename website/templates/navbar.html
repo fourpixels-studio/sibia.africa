@@ -1,0 +1,58 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+    <div class="container px-5">
+        <a class="navbar-brand fw-bold" href="#page-top">
+            <img src="{% static 'logo/logo.svg' %}" style="height: 50px;" class="img-fluid">
+        </a>
+        <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="toggler-icon top-bar"></span>
+            <span class="toggler-icon middle-bar"></span>
+            <span class="toggler-icon bottom-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav me-auto me-4 my-3 my-lg-0">
+                <li class="nav-item"><a class="nav-link me-lg-3" href="{% url 'index' %}">Home</a></li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="nav-link me-lg-3 dropdown-toggle hover"  id="dropdownBettyCareClinic" data-bs-toggle="dropdown" aria-expanded="false">Betty Care Clinic</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownBettyCareClinic">
+                            <li><a class="dropdown-item" href="#">Contact</a></li>
+                            <li><a class="dropdown-item" href="#">Request Appointment</a></li>
+                            <li><a class="dropdown-item" href="#">Patient & Visitor Guide</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="nav-link me-lg-3 dropdown-toggle hover"  id="dropdownNakuOneAfrica" data-bs-toggle="dropdown" aria-expanded="false">Naku-One Africa</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownNakuOneAfrica">
+                            <li><a class="dropdown-item" href="#">Contact</a></li>
+                            <li><a class="dropdown-item" href="#">Library</a></li>
+                            <li><a class="dropdown-item" href="#">Services</a></li>
+                            <li><a class="dropdown-item" href="#">Research & Information</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="nav-link me-lg-3 dropdown-toggle hover"  id="dropdownSibiaAI" data-bs-toggle="dropdown" aria-expanded="false">Sibia AI</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownSibiaAI">
+                            <li><a class="dropdown-item" href="#">Lab</a></li>
+                            <li><a class="dropdown-item" href="#">Data</a></li>
+                            <li><a class="dropdown-item" href="#">Podcast</a></li>
+                        </ul>
+                    </div>
+                </li>
+                {% if request.user.is_authenticated and request.user.is_superuser %}
+                <li class="nav-item"><a class="nav-link me-lg-3" href="/admin/">Admin</a></li>
+                {% endif %}
+            </ul>
+            <button class="btn btn-primary btn-lg px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <span class="d-flex align-items-center">
+                    <i class="fa-solid fa-phone me-2"></i>
+                    <span class="small">Request appointment</span>
+                </span>
+            </button>
+        </div>
+    </div>
+</nav>

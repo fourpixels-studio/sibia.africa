@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<header class="masthead">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6">
+                <!-- Mashead text and app badges-->
+                <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                    <h1 class="display-1 fs-heading text-brown lh-1 mb-3">Empowering Community Healthcare.</h1>
+                    <p class="lead text-muted mb-5">We provide healthcare to informal settlements by combining a medical AI platform, a community health hospital, and a sustainable development goals (SDG) centre for research and development.</p>
+                    <div class="d-flex flex-column flex-lg-row align-items-center">
+                        <a class="btn btn-primary me-lg-3 mb-4 mb-lg-0" href="#!">Request Appointment</a>
+                        <a class="btn btn-outline-primary" href="#!">About Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="masthead-device-mockup">
+                    <img src="{% static 'img/homepage/hero_shape.svg' %}" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Quote/testimonial aside-->
+<aside class="text-center bg-gradient-primary-to-secondary">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-xl-8">
+                <div class="text-white mb-4"><h2 class="font-alt">Transforming community health with cutting-edge AI solutions, all in one platform!</h2></div>
+            </div>
+        </div>
+    </div>
+</aside>
+<!-- App features section-->
+<section id="features">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-8 order-lg-1 mb-5 mb-lg-0">
+                <div class="container-fluid px-5">
+                    <div class="row gx-5">
+                        <div class="col-md-6 mb-5">
+                            <!-- Feature item-->
+                            <div class="text-start">
+                                <i class="bi-camera icon-feature text-gradient d-block mb-3"></i>
+                                <h3 class="font-alt">SDG Centre for Research & Development</h3>
+                                <p class="text-muted">Focus on sustainable development goals, research, and analysis.</p>
+                                <a href="" class="text-secondary">Open library</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-5">
+                            <!-- Feature item-->
+                            <div class="text-start">
+                                <i class="bi-phone icon-feature text-gradient d-block mb-3"></i>
+                                <h3 class="font-alt">Community Hospital</h3>
+                                <p class="text-muted">Provide healthcare services to the community.</p>
+                                <a href="" class="text-secondary">See clinic</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-5 mb-md-0">
+                            <!-- Feature item-->
+                            <div class="text-start">
+                                <i class="bi-gift icon-feature text-gradient d-block mb-3"></i>
+                                <h3 class="font-alt">Medical AI</h3>
+                                <p class="text-muted">Utilize artificial intelligence and modern technology to improve healthcare delivery and outcomes.</p>
+                                <a href="" class="text-secondary">Explore lab</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Feature item-->
+                            <div class="text-start">
+                                <i class="bi-patch-check icon-feature text-gradient d-block mb-3"></i>
+                                <h3 class="font-alt">And many more</h3>
+                                <p class="text-muted">Want to read more about Sibia Africa?</p>
+                                <a href="" class="text-secondary">About us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 order-lg-0">
+                <img src="{% static 'img/homepage/undraw_eco_conscious_re_r2bs.svg' %}" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subscription badge section-->
+<section class="bg-secondary" id="download">
+    <div class="container px-5">
+        <h2 class="text-center text-brown font-alt mb-4">Subscribe to our newsletter</h2>
+        <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center">
+            <form action="{% url 'newsletter_subscription' %}" method="POST">
+                {% csrf_token %}
+                <div class="d-flex flex-row form-group">
+                    <input required class="form-control me-2" name="email" id="id_email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                    <input type="submit" value="Submit" name="newsletter_subscription" class="btn btn-outline-light" id="id_newsletter_subscription">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- Basic features section-->
+<section class="bg-light">
+    <div class="container px-5">
+        <div class="row g-5 align-items-center justify-content-center justify-content-lg-between">
+            <div class="col-sm-12 col-lg-5">
+                <h2 class="display-5 text-brown fs-heading lh-1 mb-4">Revolutionizing Community Healthcare.</h2>
+                <p class="lead text-muted">Sibia combines a community health hospital, an SDG research center, and advanced medical AI to serve informal communities. Discover how we use AI and data analytics for personalized therapies, illness control, and predictive analytics, all aimed at improving community health and achieving sustainable development goals.</p>
+                <a class="my-4 lead" href="{% url 'about' %}">Learn more about Betty Care Clinic <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <div class="col-sm-12 col-lg-5">
+                <img class="img-fluid rounded-4" src="https://images.pexels.com/photos/3825458/pexels-photo-3825458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Call to action section-->
+<section class="cta bg-secondary">
+    <div class="cta-content">
+        <div class="container px-5">
+            <h2 class="text-white fs-heading display-1 lh-1 mb-4">
+                Stop waiting.
+                <br />
+                Join the movement.
+            </h2>
+        </div>
+    </div>
+</section>
+{% endblock %}
