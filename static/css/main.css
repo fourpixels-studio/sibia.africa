@@ -111,3 +111,10 @@
 .text-brown{
   color: #30292f;
 }
+
+.no-btn{
+  background: none;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
