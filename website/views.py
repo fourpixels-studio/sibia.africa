@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import NewsletterSubscriptionForm
+from django.contrib import messages
 
 
 def index(request):
@@ -20,3 +22,15 @@ def contact(request):
         "title_tag": "Contact Us",
     }
     return render(request, "contact.html", context)
+
+
+def newsletter_subscription(request):
+    if request.method == 'POST':
+        form = NewsletterSubscriptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Thank you for subscribing")
+            return redirect('index')
+    else:
+        form = NewsletterSubscriptionForm()
+    return render(request, 'index.html', {'form': form})
