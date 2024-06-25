@@ -111,6 +111,12 @@
 .text-brown{
   color: #30292f;
 }
+.bg-brown{
+  background-color: #30292f;
+}
+.bg-primary-dark{
+  background-color: #0d5c63;
+}
 
 .no-btn{
   background: none;
