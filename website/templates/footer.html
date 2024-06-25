@@ -1,12 +1,66 @@
-<footer class="bg-dark text-center py-5">
-    <div class="container px-5">
-        <div class="text-white-50 small">
-            <div class="mb-2">&copy; Sibia Africa 2024. All Rights Reserved.</div>
-            <a href="#!">Privacy</a>
-            <span class="mx-1">&middot;</span>
-            <a href="#!">Terms</a>
-            <span class="mx-1">&middot;</span>
-            <a href="#!">FAQ</a>
-        </div>
+<div class="container-fluid text-brown">
+    <div class="container border-top pt-3">
+        <footer class="py-5">
+            <div class="row">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5 class="font-alt">Sibia Africa</h5>
+                    <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About Us</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Contact Us</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">AI & Data</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5 class="font-alt">Naku-One Africa</h5>
+                    <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Media</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Podcast</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Library</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Services</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Research</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5 class="font-alt">Betty Care Clinic</h5>
+                    <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Location</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Patient Guide</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Community Health</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Appointment FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <form>
+                    <h5 class="font-alt">Subscribe to our newsletter</h5>
+                    <p>Monthly digest of what's new and exciting from us.</p>
+                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                        <form action="{% url 'newsletter_subscription' %}" method="POST">
+                            {% csrf_token %}
+                            <label for="id_email" class="visually-hidden">Email address</label>
+                            <input required name="email" id="id_email" type="text" class="form-control" placeholder="Email address">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </form>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                <p>© 2024 Sibia Africa. All rights reserved.</p>
+                <ul class="list-unstyled d-flex">
+                    <li class="ms-3">Follow Sibia Africa</li>
+                    <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                    <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </footer>
     </div>
-</footer>
+</div>

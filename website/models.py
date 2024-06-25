@@ -13,8 +13,8 @@ class Homepage(models.Model):
     hero_title = models.CharField(max_length=150, blank=True, null=True)
     hero_paragraph = models.TextField(blank=True, null=True)
     hero_primary_btn = models.CharField(max_length=90, blank=True, null=True)
-    hero_secpndary_btn = models.CharField(max_length=90, blank=True, null=True)
-    hero_image = models.ImageField(
+    hero_secondary_btn = models.CharField(max_length=90, blank=True, null=True)
+    hero_image = models.FileField(
         upload_to="homepage/", blank=True, null=True)
     quote = models.TextField(blank=True, null=True)
     feature_1_title = models.CharField(max_length=150, blank=True, null=True)

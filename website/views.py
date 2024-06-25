@@ -1,13 +1,32 @@
 from django.shortcuts import render, redirect
 from .forms import NewsletterSubscriptionForm
 from django.contrib import messages
+from .models import Homepage
+from django.http import HttpResponse
 
 
 def index(request):
-    context = {
-        "title_tag": "Home",
-    }
-    return render(request, "index.html", context)
+
+    try:
+        homepage_data = Homepage.objects.first()
+
+        if not homepage_data:
+            raise ValueError("No Homeage object found.")
+
+        context = {
+            "homepage_data": homepage_data,
+            "title_tag": "Revolutionizing Community Healthcare with AI",
+            "meta_description": "Sibia integrates a community health hospital, SDG research center, and advanced medical AI to serve informal communities with personalized therapies, illness control, and predictive analytics.",
+            "meta_keywords": "Sibia, community healthcare, medical AI, SDG research, personalized therapies, illness control, predictive analytics, healthcare solutions, sustainable development goals",
+        }
+
+        return render(request, "index.html", context)
+
+    except Homepage.DoesNotExist:
+        return HttpResponse("Homeage not found.", status=404)
+
+    except Exception as e:
+        return HttpResponse("An error occurred while processing the request.", status=500)
 
 
 def about(request):
