@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import HttpResponse
-from .forms import NewsletterSubscriptionForm
+from .forms import NewsletterSubscriptionForm, AppointmentForm
 from .models import Homepage, PrivacyPolicy, TermsOfService, FrequentlyAskedQuestion, Help
 
 
@@ -105,3 +105,17 @@ def help(request):
         "terms_of_service_paragraph": terms_of_service_paragraph,
     }
     return render(request, "help.html", context)
+
+
+def request_appointment(request):
+    if request.method == 'POST':
+        form = AppointmentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, "Appointment confirmed! We have received your request and will contact you shortly with the details. Thank you for your trust.")
+            return redirect('index')
+    else:
+        form = AppointmentForm()
+
+    return render(request, 'contact.html', {'form': form})
