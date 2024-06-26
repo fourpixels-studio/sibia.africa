@@ -95,3 +95,14 @@ class Help(models.Model):
 
     class Meta:
         verbose_name_plural = "Help"
+
+
+class Appointment(models.Model):
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    message = models.TextField()
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name}'s Appointment"
