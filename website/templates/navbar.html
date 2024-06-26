@@ -16,6 +16,7 @@
                     <div class="dropdown">
                         <a class="nav-link me-lg-3 dropdown-toggle hover"  id="dropdownBettyCareClinic" data-bs-toggle="dropdown" aria-expanded="false">Betty Care Clinic</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownBettyCareClinic">
+                            <li><a class="dropdown-item" href="#">About</a></li>
                             <li><a class="dropdown-item" href="#">Contact</a></li>
                             <li><a class="dropdown-item" href="#">Request Appointment</a></li>
                             <li><a class="dropdown-item" href="#">Patient & Visitor Guide</a></li>
@@ -28,7 +29,7 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownAdmin">
                             <li><a class="dropdown-item" href="#">Contact</a></li>
                             <li><a class="dropdown-item" href="#">Library</a></li>
-                            <li><a class="dropdown-item" href="#">Services</a></li>
+                            <li><a class="dropdown-item" href="#">SDG3 Centre</a></li>
                             <li><a class="dropdown-item" href="#">Research & Information</a></li>
                         </ul>
                     </div>
@@ -55,6 +56,7 @@
                 <a class="no-btn ms-2 mb-2 mb-lg-0 dropdown-toggle hover"  id="dropdownAdmin" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownAdmin">
                     <li><a class="dropdown-item" href="/admin/">Admin</a></li>
+                    <li><a class="dropdown-item" href="{% url 'edit_homepage' pk=1 %}">Edit Homepage</a></li>
                     <li><a class="dropdown-item" href="{% url 'account_signout' %}">Log out</a></li>
                 </ul>
             </div>

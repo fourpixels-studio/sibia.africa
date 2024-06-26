@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<form action="{% url 'edit_homepage' pk=1 %}"  method="POST">
+    {% csrf_token %}
+    <header class="masthead">
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-12">
+                    <!-- Mashead text and app badges-->
+                    <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                        <h1 class="display-1 fs-heading text-brown lh-1 mb-3">{{ edit_homepage_form.hero_title }}</h1>
+                        <p class="lead text-muted mb-5">{{ edit_homepage_form.hero_paragraph }}</p>
+                        <div class="d-flex flex-column flex-lg-row align-items-center">
+                            <a class="btn btn-primary me-lg-3 mb-4 mb-lg-0">{{ edit_homepage_form.hero_primary_btn }}</a>
+                            <a class="btn btn-outline-primary">{{ edit_homepage_form.hero_secondary_btn }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="masthead-device-mockup">
+                        <img src="{{ edit_homepage_form.hero_image.url }}" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Quote/testimonial aside-->
+    <aside class="text-center bg-gradient-primary-to-secondary">
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-xl-8">
+                    <div class="text-white mb-4"><h2 class="font-alt">{{ edit_homepage_form.quote }}</h2></div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- App features section-->
+    <section id="features">
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-8 order-lg-1 mb-5 mb-lg-0">
+                    <div class="container-fluid px-5">
+                        <div class="row gx-5">
+                            <div class="col-md-6 mb-5">
+                                <!-- Feature item-->
+                                <div class="text-start">
+                                    <i class="bi-camera icon-feature text-gradient d-block mb-3"></i>
+                                    <h3 class="font-alt">{{ edit_homepage_form.feature_1_title }}</h3>
+                                    <p class="text-muted">{{ edit_homepage_form.feature_1_paragraph }}</p>
+                                    <a class="text-secondary">{{ edit_homepage_form.feature_1_btn }}</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-5">
+                                <!-- Feature item-->
+                                <div class="text-start">
+                                    <i class="bi-phone icon-feature text-gradient d-block mb-3"></i>
+                                    <h3 class="font-alt">{{ edit_homepage_form.feature_2_title }}</h3>
+                                    <p class="text-muted">{{ edit_homepage_form.feature_2_paragraph }}</p>
+                                    <a class="text-secondary">{{ edit_homepage_form.feature_2_btn }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-5 mb-md-0">
+                                <!-- Feature item-->
+                                <div class="text-start">
+                                    <i class="bi-gift icon-feature text-gradient d-block mb-3"></i>
+                                    <h3 class="font-alt">{{ edit_homepage_form.feature_3_title }}</h3>
+                                    <p class="text-muted">{{ edit_homepage_form.feature_3_paragraph }}</p>
+                                    <a class="text-secondary">{{ edit_homepage_form.feature_3_btn }}</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Feature item-->
+                                <div class="text-start">
+                                    <i class="bi-patch-check icon-feature text-gradient d-block mb-3"></i>
+                                    <h3 class="font-alt">{{ edit_homepage_form.feature_4_title }}</h3>
+                                    <p class="text-muted">{{ edit_homepage_form.feature_4_paragraph }}</p>
+                                    <a class="text-secondary">{{ edit_homepage_form.feature_4_btn }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 order-lg-0">
+                    <img src="{{ edit_homepage_form.features_image.url }}" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- subscription badge section-->
+    <section class="bg-secondary" id="download">
+        <div class="container px-5">
+            <h2 class="text-center text-brown font-alt mb-4">{{ edit_homepage_form.newsletter_subscription }}</h2>
+            <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center">
+                    <div class="d-flex flex-row form-group">
+                        <label for="id_email" class="visually-hidden">Email address</label>
+                        <input class="form-control me-2" name="email" id="id_email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                    </div>
+            </div>
+        </div>
+    </section>
+    <!-- Basic features section-->
+    <section class="bg-light">
+        <div class="container px-5">
+            <div class="row g-5 align-items-center justify-content-center justify-content-lg-between">
+                <div class="col-sm-12 col-lg-5">
+                    <h2 class="display-5 text-brown fs-heading lh-1 mb-4">{{ edit_homepage_form.about_title }}</h2>
+                    <p class="lead text-muted">{{ edit_homepage_form.about_paragraph }}</p>
+                    <a class="my-4 lead">{{ edit_homepage_form.about_primary_btn }} <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+                <div class="col-sm-12 col-lg-5">
+                    <img class="img-fluid rounded-4" src="{{ edit_homepage_form.about_image.url }}" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Call to action section-->
+    <section class="cta bg-secondary">
+        <div class="cta-content">
+            <div class="container px-5">
+                <h2 class="text-white fs-heading display-1 lh-1 mb-4">{{ edit_homepage_form.cta|safe|linebreaks }}</h2>
+            </div>
+        </div>
+    </section>
+    <div class="container fixed-bottom text-center">
+        <a href="{% url 'index' %}" class="btn bg-white btn-outline-primary btn-lg"><span class="text-brown">Cancel</span></a>
+        <button class="btn btn-primary btn-lg" type="submit">Save changes</button>
+    </div>
+</form>
+{% endblock %}
