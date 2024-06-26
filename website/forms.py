@@ -1,5 +1,5 @@
 from django import forms
-from .models import NewsletterSubscription, Homepage, FrequentlyAskedQuestion
+from .models import NewsletterSubscription, Homepage, Appointment
 
 
 class NewsletterSubscriptionForm(forms.ModelForm):
@@ -14,7 +14,12 @@ class HomepageForm(forms.ModelForm):
         fields = ('__all__')
 
 
-class FrequentlyAskedQuestionForm(forms.ModelForm):
+class AppointmentForm(forms.ModelForm):
     class Meta:
-        model = FrequentlyAskedQuestion
-        fields = ('__all__')
+        model = Appointment
+        fields = [
+            'name',
+            'email',
+            'phone',
+            'message',
+        ]
