@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_summernote',
     'website',
     'account',
+    'nakuoneafrica',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +138,21 @@ STATIC_ROOT = '/home/wstjifpa/public_html/static'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+custom_file_limit = 20 * 1024 * 1024  # 20 MB in bytes
+SUMMERNOTE_CONFIG = {
+    'attachment_filesize_limit': custom_file_limit,
+    'attachment_upload_to': 'articles/attachments',
+    'width': '100%',
+    'height': 300,
+    'toolbar': [
+        ['style', ['style']],
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['fontsize', ['fontsize']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['insert', ['link', 'picture', 'video', 'hr']],
+        ['view', ['fullscreen', 'undo', 'redo']],
+    ],
+    'toolbarSticky': True
+}
