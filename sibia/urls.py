@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("website.urls")),
     path("account/", include("account.urls")),
+    path("Naku-One-Africa/", include("nakuoneafrica.urls")),
+    path("summernote/", include('django_summernote.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # Tab/Site Title
