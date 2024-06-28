@@ -94,3 +94,67 @@
 .header-gradient a {
     z-index: 2;
 }
+
+/* abril font */
+.fs-heading {
+  font-family: "Abril Fatface", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.hover{
+  cursor: pointer;
+}
+.hover:hover{
+  cursor: pointer;
+}
+.text-brown{
+  color: #30292f;
+}
+.bg-brown{
+  background-color: #30292f;
+}
+.bg-primary-dark{
+  background-color: #0d5c63;
+}
+
+.no-btn{
+  background: none;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+/* gradient overlay */
+.gradient-overlay {
+    position: relative;
+}
+
+.gradient-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    z-index: 1;
+}
+
+.gradient-overlay img {
+    position: relative;
+    z-index: 0;
+}
+/* gradient overlay */
+
+/* custom badges */
+.custom-badge-green{
+  text-decoration: none; 
+  border: 1px solid #cce2e4; 
+  background-color: #cce2e4; 
+  border-radius: 6px; 
+  padding: .2rem .5rem; 
+  font-size: 10px; 
+  color: #5b7b80
+}
+/* custom badges */
