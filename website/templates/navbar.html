@@ -1,7 +1,7 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
     <div class="container px-5">
-        <a class="navbar-brand fw-bold" href="#page-top">
+        <a class="navbar-brand fw-bold" href="{% url 'index' %}">
             <img src="{% static 'logo/logo.svg' %}" style="height: 50px;" class="img-fluid">
         </a>
         <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,10 +27,10 @@
                     <div class="dropdown">
                         <a class="nav-link me-lg-3 dropdown-toggle hover"  id="dropdownAdmin" data-bs-toggle="dropdown" aria-expanded="false">Naku-One Africa</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownAdmin">
-                            <li><a class="dropdown-item" href="#">Contact</a></li>
-                            <li><a class="dropdown-item" href="#">Library</a></li>
-                            <li><a class="dropdown-item" href="#">SDG3 Centre</a></li>
-                            <li><a class="dropdown-item" href="#">Research & Information</a></li>
+                            <li><a class="dropdown-item" href="{% url 'nakuoneafrica' %}">Contact</a></li>
+                            <li><a class="dropdown-item" href="{% url 'nakuoneafrica' %}">Library</a></li>
+                            <li><a class="dropdown-item" href="{% url 'nakuoneafrica' %}">SDG3 Centre</a></li>
+                            <li><a class="dropdown-item" href="{% url 'nakuoneafrica' %}">Research & Information</a></li>
                         </ul>
                     </div>
                 </li>
@@ -51,7 +51,7 @@
                     <span class="small">Request appointment</span>
                 </span>
             </button>
-            {% if request.user.is_authenticated and request.user.is_superuser %}
+            {% if request.user.is_superuser %}
             <div class="dropdown">
                 <a class="no-btn ms-2 mb-2 mb-lg-0 dropdown-toggle hover"  id="dropdownAdmin" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownAdmin">
@@ -60,6 +60,13 @@
                     <li><a class="dropdown-item" href="{% url 'account_signout' %}">Log out</a></li>
                 </ul>
             </div>
+            {% elif request.user.is_authenticated %}
+            <a style="text-decoration: none;" class="hover text-brown ms-2 mb-2 mb-lg-0" href="{% url 'account_signout' %}">
+                <span class="d-flex align-items-center">
+                    <i class="fa-solid fa-right-from-bracket me-2"></i>
+                    <span>Log out</span>
+                </span>
+            </a>
             {% else %}
             <button class="no-btn ms-2 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal">
                 <span class="d-flex align-items-center">
