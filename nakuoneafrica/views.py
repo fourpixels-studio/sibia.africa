@@ -8,7 +8,7 @@ def nakuoneafrica(request):
         "title_tag": "Naku-One Africa",
         "sdgs": SDG.objects.all(),
         "articles": Article.objects.order_by('-pk'),
-        "meta_description": "Find out how Naku One Africa is advancing the awareness, knowledge and implementation of the sustainable development goals.",
+        "meta_description": "Find out how Naku One Africa is advancing the awareness, knowledge and  implementation of the sustainable development goals",
         "meta_keywords": "Sustainable Development, Community Hospital, Informal Settlements, Vulnerable Communities, Global South, SDGs, Research and Development, AI Studio, Data Analytics Lab, Community Health, Social Impact, Environmental Sustainability, Education and Innovation, Healthcare Access, Poverty Alleviation",
     }
 
@@ -20,8 +20,22 @@ def article_list(request):
     context = {
         "title_tag": "Articles | Naku-One Africa",
         "articles": Article.objects.order_by('-pk'),
-        "meta_description": "",
-        "meta_keywords": "",
+        "meta_description": "Read our latest articles. Find out how Naku One Africa is advancing the awareness, knowledge and  implementation of the sustainable development goals",
+        "meta_keywords": "Sustainable Development, Community Hospital, Informal Settlements, Vulnerable Communities, Global South, SDGs, Research and Development, AI Studio, Data Analytics Lab, Community Health, Social Impact, Environmental Sustainability, Education and Innovation, Healthcare Access, Poverty Alleviation",
+    }
+
+    return render(request, "article_list.html", context)
+
+
+def articles_listed_by_sdg(request, slug):
+    sdg = get_object_or_404(SDG, slug=slug)
+    articles = Article.objects.filter(sdg=sdg, is_published=True)
+    context = {
+        "title_tag": f"{sdg} Articles | Naku-One Africa",
+        "articles": articles,
+        "sdg": sdg,
+        "meta_description": f"Read our latest articles in {sdg}. Find out how Naku One Africa is advancing the awareness, knowledge and  implementation of the sustainable development goals",
+        "meta_keywords": f"{sdg}, Sustainable Development, Community Hospital, Informal Settlements, Vulnerable Communities, Global South, SDGs, Research and Development, AI Studio, Data Analytics Lab, Community Health, Social Impact, Environmental Sustainability, Education and Innovation, Healthcare Access, Poverty Alleviation",
     }
 
     return render(request, "article_list.html", context)
@@ -29,11 +43,18 @@ def article_list(request):
 
 def article_detail(request, slug):
     article = get_object_or_404(Article, slug=slug)
+    if article.meta_thumbnail:
+        meta_thumbnail = article.meta_thumbnail.url
+    else:
+        meta_thumbnail = None
     context = {
-        "title_tag": article.title,
         "articles": Article.objects.order_by('-pk'),
+        "sdgs": SDG.objects.all(),
         "article": article,
-        "meta_description": "",
-        "meta_keywords": "", }
+        "title_tag": article.title,
+        "meta_description": article.summary,
+        "meta_thumbnail": meta_thumbnail,
+        "meta_keywords": f"{article.sdg}, Sustainable Development, Community Hospital, Informal Settlements, Vulnerable Communities, Global South, SDGs, Research and Development, AI Studio, Data Analytics Lab, Community Health, Social Impact, Environmental Sustainability, Education and Innovation, Healthcare Access, Poverty Alleviation",
+    }
 
     return render(request, "article_detail.html", context)

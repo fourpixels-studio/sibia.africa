@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="nav-scroller pt-1 pb-3 border-bottom my-2">
+        <nav class="nav d-flex justify-content-start">
+            {% for sdg in sdgs %}
+            <a class="p-2 link-dark" href="{{ sdg.get_url }}">{{ sdg }}</a>
+            {% endfor %}
+        </nav>
+    </div>
+</div>

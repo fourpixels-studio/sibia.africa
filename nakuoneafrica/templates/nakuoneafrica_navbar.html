@@ -1,0 +1,81 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+    <div class="container px-5">
+        <a class="navbar-brand fw-bold" href="{% url 'index' %}">
+            <img src="{% static 'logo/logo.svg' %}" style="height: 50px;" class="img-fluid">
+        </a>
+        <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="toggler-icon top-bar"></span>
+            <span class="toggler-icon middle-bar"></span>
+            <span class="toggler-icon bottom-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav me-auto me-4 my-3 my-lg-0">
+                <li class="nav-item"><a class="nav-link me-lg-3" href="{% url 'index' %}">Home</a></li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="nav-link me-lg-3 dropdown-toggle hover"  id="dropwdownResources" data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropwdownResearch">
+                            <li><a class="dropdown-item" href="{% url 'article_list' %}">Reports</a></li>
+                            <li><a class="dropdown-item" href="{% url 'article_list' %}">Features</a></li>
+                            <li><a class="dropdown-item" href="#">Podcasts</a></li>
+                            <li><a class="dropdown-item" href="#">Videos & Webinars</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="nav-link me-lg-3 dropdown-toggle hover"  id="dropdownResearch" data-bs-toggle="dropdown" aria-expanded="false">Research</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownResearch">
+                            <li><a class="dropdown-item" href="{% url 'article_list' %}">Articles</a></li>
+                            <li><a class="dropdown-item" href="{% url 'nakuoneafrica' %}">Scientific Reports</a></li>
+                            <li><a class="dropdown-item" href="{% url 'nakuoneafrica' %}">SDG Graphics</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="nav-link me-lg-3" href="{% url 'nakuoneafrica' %}">News</a></li>
+                <li class="nav-item"><a class="nav-link me-lg-3" href="{% url 'nakuoneafrica' %}">Events</a></li>
+                <li class="nav-item"><a class="nav-link me-lg-3" href="{% url 'nakuoneafrica' %}">About</a></li>
+                {% if request.user.is_superuser or request.user.is_staff %}
+                <li class="nav-item">
+                    <a class="nav-link me-lg-3" href="{% url 'new_article' %}">
+                        <span class="badge bg-dark">Add New Article</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link me-lg-3" href="{% url 'new_sdg' %}">
+                        <span class="badge bg-dark">Add New SDG</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+            <button class="no-btn mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <span class="d-flex align-items-center">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+            </button>
+            {% if request.user.is_superuser %}
+            <div class="dropdown">
+                <a class="no-btn ms-2 mb-2 mb-lg-0 dropdown-toggle hover"  id="dropdownResearch" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownResearch">
+                    <li><a class="dropdown-item" href="/admin/">Admin</a></li>
+                </ul>
+            </div>
+            {% elif request.user.is_authenticated %}
+            <a style="text-decoration: none;" class="hover text-brown ms-2 mb-2 mb-lg-0" href="{% url 'account_signout' %}">
+                <span class="d-flex align-items-center">
+                    <i class="fa-solid fa-right-from-bracket me-2"></i>
+                    <span>Log out</span>
+                </span>
+            </a>
+            {% else %}
+            <button class="no-btn ms-2 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal">
+                <span class="d-flex align-items-center">
+                    <i class="fa-solid fa-user me-2"></i>
+                    <span>Log in</span>
+                </span>
+            </button>
+            {% endif %}
+        </div>
+    </div>
+</nav>

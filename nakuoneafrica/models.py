@@ -2,49 +2,49 @@ from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
 from django_resized import ResizedImageField
-from django.urls import reverse
+from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class SDG(models.Model):
     name = models.CharField(max_length=80)
+    description = models.TextField(null=True, blank=True)
     icon = models.CharField(max_length=20)
+    slug = models.SlugField(max_length=70, null=True, blank=True)
 
     def __str__(self):
         return self.name
 
-
-class Category(models.Model):
-    title = models.CharField(max_length=70)
-    slug = models.SlugField(max_length=70, unique=True, blank=True)
-    description = models.TextField(null=True, blank=True)
-
     class Meta:
-        verbose_name_plural = "Categories"
-
-    def __str__(self):
-        return self.title
+        verbose_name_plural = "SDGs"
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
-        super(Category, self).save(*args, **kwargs)
+            self.slug = slugify(self.name)
+        super(SDG, self).save(*args, **kwargs)
 
+    @property
     def get_url(self):
-        return reverse("article_list", kwargs={
+        return reverse("articles_listed_by_sdg", kwargs={
             "slug": self.slug
         })
 
     @property
     def num_articles(self):
-        return Article.objects.filter(categories=self).count()
+        return Article.objects.filter(sdg=self).count()
 
 
 class Article(models.Model):
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, blank=True, null=True)
     title = models.TextField(blank=True, null=True)
     summary = models.TextField(blank=True, null=True)
-    cover_image = models.ImageField(blank=True, null=True)
-    category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, blank=True, null=True)
+    cover_image = models.ImageField(
+        upload_to="article_images/", blank=True, null=True)
+    attachment = models.FileField(
+        upload_to="article_attachments/", blank=True, null=True)
+    sdg = models.ForeignKey(
+        SDG, on_delete=models.CASCADE, blank=True, null=True)
     content = models.TextField(blank=True, null=True)
     meta_thumbnail = ResizedImageField(
         size=[1200, 600],
@@ -54,7 +54,16 @@ class Article(models.Model):
         blank=True,
         null=True
     )
+    published_date = models.DateTimeField(
+        default=timezone.now, blank=True, null=True)
+    date = models.DateTimeField(default=timezone.now)
+    is_published = models.BooleanField(default=False)
     slug = models.SlugField(unique=True, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     def save(self, *args, **kwargs):
         super(Article, self).save(*args, **kwargs)

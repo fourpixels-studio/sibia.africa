@@ -1,0 +1,17 @@
+{% load static %}
+<div class="card rounded-bottom rounded-3">
+    {% if article.meta_thumbnail %}
+    <img loading="lazy" src="{{ article.meta_thumbnail.url }}" style="height: 200px; width: 900px; object-fit: cover;" class="img-fluid w-100 rounded-top" alt="{{ article.title }}'s Thumbnail">
+    {% else %}
+    <img loading="lazy" src="{% static 'sibia_meta_thumbnail.jpg' %}" style="height: 200px; width: 900px; object-fit: cover;" class="img-fluid w-100 rounded-top" alt="{{ article.title }}'s Thumbnail">
+    {% endif %}
+    <div class="card-body">
+        <div class="d-flex align-items-center">
+            <a href="{{ article.sdg.get_url }}" class="custom-badge-green">{{ article.sdg }}</a>
+            <span style="font-size: 12px;" class="text-muted ms-2">{{ article.date|timesince }} ago</span>
+        </div>
+        <h5 class="card-title font-alt mt-2 text-brown">{{ article.title }}</h5>
+        <p class="card-text text-muted">{{ article.summary|safe }}</p>
+        <a href="{{ article.get_url }}" class="btn w-100 btn-outline-dark rounded-2">Read more</a>
+    </div>
+</div>

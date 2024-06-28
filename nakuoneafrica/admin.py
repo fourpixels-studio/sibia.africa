@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import SDG, Category, Article
+from .models import SDG, Article
 
 admin.site.register(SDG)
-admin.site.register(Category)
 admin.site.register(Article)

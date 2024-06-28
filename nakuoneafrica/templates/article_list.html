@@ -1,0 +1,24 @@
+{% extends 'nakuoneafrica_base.html' %}
+{% load static %}
+{% block body %}
+<div style="padding-top: 6rem;" class="container">
+    <header class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+            {% for sdg in sdgs %}
+            <a class="p-2 link-secondary" href="{{ sdg.get_url }}">{{ sdg.name }}</a>
+            {% endfor %}
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="display-4 font-alt text-brown fw-bold border-bottom pb-3">Naku-One Africa Articles</h1>
+        <section class="row g-3 pt-3">
+            {% for article in articles %}
+            <article class="col-sm-6 col-lg-4">
+                {% include 'components/article.html' %}
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+</div>
+{% endblock %}
