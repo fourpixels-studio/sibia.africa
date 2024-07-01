@@ -34,6 +34,8 @@ def articles_listed_by_sdg(request, slug):
         "title_tag": f"Goal {sdg.pk}: {sdg} Articles | Naku-One Africa",
         "articles": articles,
         "sdg": sdg,
+        "active_sdg": sdg,
+        "sdgs": SDG.objects.all(),
         "meta_description": f"Read our latest articles in {sdg}. Find out how Naku One Africa is advancing the awareness, knowledge and  implementation of the sustainable development goals",
         "meta_keywords": f"{sdg}, Sustainable Development, Community Hospital, Informal Settlements, Vulnerable Communities, Global South, SDGs, Research and Development, AI Studio, Data Analytics Lab, Community Health, Social Impact, Environmental Sustainability, Education and Innovation, Healthcare Access, Poverty Alleviation",
     }
@@ -47,14 +49,17 @@ def article_detail(request, slug):
         meta_thumbnail = article.meta_thumbnail.url
     else:
         meta_thumbnail = None
+    author = article.author.first_name
     context = {
         "articles": Article.objects.order_by('-pk'),
         "sdgs": SDG.objects.all(),
         "article": article,
+        "author": author,
         "title_tag": f"Goal {article.sdg.pk}: {article.title}",
         "meta_description": article.summary,
         "meta_thumbnail": meta_thumbnail,
-        "meta_keywords": f"{article.sdg}, Sustainable Development, Community Hospital, Informal Settlements, Vulnerable Communities, Global South, SDGs, Research and Development, AI Studio, Data Analytics Lab, Community Health, Social Impact, Environmental Sustainability, Education and Innovation, Healthcare Access, Poverty Alleviation",
+        "meta_keywords": f"{article.sdg.name}, Sustainable Development, Community Hospital, Informal Settlements, Vulnerable Communities, Global South, SDGs, Research and Development, AI Studio, Data Analytics Lab, Community Health, Social Impact, Environmental Sustainability, Education and Innovation, Healthcare Access, Poverty Alleviation",
     }
 
     return render(request, "article_detail.html", context)
+
