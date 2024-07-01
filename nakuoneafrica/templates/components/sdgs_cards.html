@@ -1,0 +1,9 @@
+<a class="no-link  hover-card" href="{{ sdg.get_url }}">
+    <div style="background-color: #{{ sdg.color }};" class="rounded-3 p-4 hover-card">
+        <div class="d-flex">
+            <h1 class="font-alt text-white me-2">{{ sdg.pk }}</h1>
+            <span class="p font-alt text-white">{{ sdg.name|upper }}</span>
+        </div>
+        <div class="text-center"><i class="fa-solid {{ sdg.icon }} icon-feature text-white"></i></div>
+    </div>
+</a>
