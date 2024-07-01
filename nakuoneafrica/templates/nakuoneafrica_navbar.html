@@ -44,7 +44,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link me-lg-3" href="{% url 'new_sdg' %}">
-                        <span class="badge bg-dark">Add New SDG</span>
+                        <span class="badge bg-dark">Update SDGs</span>
                     </a>
                 </li>
                 {% endif %}
@@ -59,6 +59,14 @@
                 <a class="no-btn ms-2 mb-2 mb-lg-0 dropdown-toggle hover"  id="dropdownResearch" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownResearch">
                     <li><a class="dropdown-item" href="/admin/">Admin</a></li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'account_signout' %}">
+                            <span class="d-flex align-items-center">
+                                <i class="fa-solid fa-right-from-bracket me-2"></i>
+                                <span>Log out</span>
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             {% elif request.user.is_authenticated %}
